@@ -4,10 +4,167 @@
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MP1</title>
-    </head>
+        <title>My MP1 Website</title>
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head >
     <body>
-        <h1>Hello World! Welcome to MP1!</h1>
-        <img src="assets/image.jpg">
-    </body>
+    <header id="header">
+        <nav id="navbar" class="navbar">
+            <div class="nav-inner">
+                <a class="brand" href="#hero">MP1</a>
+                <ul class="nav-list">
+                    <li><a class="nav-link" href="#hero">Home</a></li>
+                    <li><a class="nav-link" href="#about">About</a></li>
+                    <li><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li><a class="nav-link" href="#parallax">Story</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <!-- （Position Indicator） -->
+                <div class="read-progress"><span class="read-progress-bar"></span></div>
+            </div>
+        </nav>
+    </header>
+    <!-- HERO -->
+    <section id="hero" class="stripe hero full-height">
+        <!-- background video -->
+        <video class="bg-video" autoplay muted loop playsinline preload="metadata" poster="assets/background.jpg">
+            <source src="assets/video.mp4" type="video/mp4">
+        </video>
+
+        <div class="container v-center hero-overlay">
+            <h1 class="hero-title transparent">Welcome to My MP1 Website</h1>
+            <p class="hero-sub">Single-page • SCSS • Vanilla JS • Responsive</p>
+
+            <!-- CTA group -->
+            <div class="cta-group">
+                <button id="open-modal" class="btn primary" aria-haspopup="dialog" aria-controls="modal">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> See MP1 Features
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="stripe">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="multicol">
+
+                <p>
+                    I'm a CS student at UIUC who enjoys building clean, responsive web apps.
+                    Recently, I've been practicing modern HTML5, SCSS, and vanilla JavaScript to sharpen my frontend skills.
+                </p>
+                <p>
+                    Outside class, I like to work out at Planet Fitness, study at Grainger Engineering Library,
+                    and unwind by exploring the Arboretum. These places are also featured below.
+                </p>
+                <p>
+                    For this MP1, I focused on user-friendly interactions: a sticky navbar with scroll indicator,
+                    a responsive carousel, a parallax section, and a modal — all without UI libraries.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thin parallax divider between About Me and Gallery -->
+    <section class="spacer-divider" aria-hidden="true"></section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="stripe">
+        <div class="container">
+            <h2>My Favorite Places in Champaign</h2>
+            <div class="carousel" aria-label="Places Carousel">
+                <div class="carousel-track">
+                    <!-- Planet Fitness -->
+                    <div class="slide">
+                        <figure class="place">
+                            <img src="assets/Planet Fitness.jpg" alt="Planet Fitness">
+                            <figcaption class="caption">
+                                <h3>Planet Fitness</h3>
+                                <p>A place where I like to unwind with cardio and strength equipment after class.</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <!-- Grainger Library -->
+                    <div class="slide">
+                        <figure class="place">
+                            <img src="assets/Grainger.jpg" alt="Grainger Engineering Library">
+                            <figcaption class="caption">
+                                <h3>Grainger Engineering Library</h3>
+                                <p>My go-to spot for studying and project work — quiet, well-equipped, and open late.</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <!-- Arboretum -->
+                    <div class="slide">
+                        <figure class="place">
+                            <img src="assets/Arboretum.jpg" alt="Arboretum">
+                            <figcaption class="caption">
+                                <h3>Arboretum</h3>
+                                <p>A peaceful corner of campus where nature and culture meet — perfect for walks or photography.</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="carousel-btn next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax / Fixed Background Image -->
+    <section id="parallax" class="stripe parallax">
+        <div class="container">
+            <h2>Fixed Background Image</h2>
+            <p>Scroll to see the fixed background effect.</p>
+        </div>
+    </section>
+
+
+    <!-- Contact + Social Icons -->
+    <section id="contact" class="stripe">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>Find me here:</p>
+            <div class="socials">
+                <a href="https://github.com/fhs1220888" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/haosen-fang" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:haosenf2@illinois.edu" aria-label="Email"><i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer stripe">
+        <div class="container">
+            <small>© 2025 My MP1 Website</small>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close" data-close>&times;</button>
+            <h3>What's in this MP1</h3>
+            <ul class="feature-list">
+                <li>Single-page layout with full-width sections</li>
+                <li>Sticky navbar + active position indicator</li>
+                <li>Navbar resize on scroll</li>
+                <li>Smooth scrolling</li>
+                <li>Carousel (3 slides with arrows)</li>
+                <li>Multi-column layout</li>
+                <li>Centered content & one element vertically centered</li>
+                <li>Responsive at multiple resolutions</li>
+                <li>Fixed background image (parallax)</li>
+                <li>Modal window</li>
+                <li>HTML5 video (hero background)</li>
+                <li>CSS3 animations & transitions</li>
+                <li>Scalable vector icons + social icons</li>
+                <li>SCSS variables, nesting, mixins</li>
+            </ul>
+        </div>
+    </div>
 </html>

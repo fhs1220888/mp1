@@ -35,6 +35,7 @@ body {
   background: $bg;
 }
 
+
 h1,h2,h3 { margin: 0 0 12px; }
 p { color: $muted; line-height: 1.7; }
 
@@ -398,3 +399,61 @@ header {
   .stripe { padding: 48px 0; }
   .navbar .nav-list { gap: 14px; }
 }
+/* Mobile layout fixes */
+html, body { overflow-x: hidden; }
+header, #navbar { width: 100%; max-width: 100%; }
+
+.navbar .nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 480px) {
+  .navbar .nav-link { padding: 6px 8px; font-size: 14px; }
+  .navbar .brand { font-size: 16px; }
+}
+
+.carousel { width: 100%; max-width: 100%; }
+.carousel .slide { margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* Mobile layout fixes – keep navbar on top */
+header#navbar, #navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+@media (max-width: 520px) {
+  header#navbar, #navbar { position: fixed; left: 0; right: 0; }
+  body { padding-top: 64px; }
+}
+/* Nav fixed on all viewports */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+}
+
+body { padding-top: var(--navH, 72px); }
+
+/* navbar shrink mobile fix */
+#navbar .nav-inner { padding-block: 10px; }
+#navbar.shrink .nav-inner { padding-block: 6px; }
+
+#navbar .nav-list { display: flex; gap: 10px; flex-wrap: wrap; }
+#navbar .nav-link { padding: 8px 12px; }
+#navbar.shrink .nav-link { padding: 6px 10px; }
+
+@media (max-width: 520px) {
+  #navbar .nav-link { padding: 6px 8px; font-size: 14px; }
+  #navbar.shrink .nav-link { padding: 4px 6px; font-size: 13px; }
+  #navbar .nav-list { gap: 8px; }
+}
+
+.read-progress { position: absolute; left: 0; right: 0; bottom: 0; }
+#navbar { overflow: hidden; }
+

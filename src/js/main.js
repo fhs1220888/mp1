@@ -49,6 +49,16 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${currentId}`));
         }
     };
+    // 让 body 顶部间距跟随导航实际高度（含 shrink）
+    const setNavOffset = () => {
+        if (!navbar) return;
+        document.body.style.setProperty('--navH', navbar.offsetHeight + 'px');
+    };
+
+// 初次、滚动（可能 shrink）、窗口变化都更新
+    setNavOffset();
+    window.addEventListener('resize', setNavOffset);
+    window.addEventListener('scroll', setNavOffset, { passive: true });
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 

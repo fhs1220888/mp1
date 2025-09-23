@@ -1,0 +1,73 @@
+ChatGPT Usage Log – MP1 (Fix Mobile Layout)
+
+User:
+When I open the website on my phone, the proportions are not good. The navbar is longer than the content below, which causes a blank column on the right side.
+
+ChatGPT:
+This is a common mobile issue: some elements have a width greater than 100%, pushing the page sideways.
+Fixes include:
+1. Add `html, body { overflow-x: hidden; }`
+2. Ensure navbar/carousel use `width: 100%` instead of `100vw`
+3. Constrain all images with `max-width: 100%`
+
+Suggested SCSS fix:
+```scss
+html, body { overflow-x: hidden; }
+header, #navbar { width: 100%; max-width: 100%; }
+
+.navbar .nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 480px) {
+  .navbar .nav-link { padding: 6px 8px; font-size: 14px; }
+  .navbar .brand { font-size: 16px; }
+}
+
+.carousel { width: 100%; max-width: 100%; }
+.carousel .slide { margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; display: block; }
+```
+
+---
+
+User:
+But now the navbar does not stay fixed while scrolling on mobile.
+
+ChatGPT:
+On small screens, `sticky` can be broken by parent containers. Use `fixed` instead and add top padding to body:
+
+```scss
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+}
+body { padding-top: var(--navH, 72px); }
+```
+
+And dynamically update the offset in JavaScript:
+
+```js
+const setNavOffset = () => {
+  if (!navbar) return;
+  document.body.style.setProperty('--navH', navbar.offsetHeight + 'px');
+};
+setNavOffset();
+window.addEventListener('resize', setNavOffset);
+window.addEventListener('scroll', setNavOffset, { passive: true });
+```
+
+---
+
+User:
+Now it works on mobile, but on desktop the navbar still does not follow scrolling.
+
+ChatGPT:
+Unify the behavior: set the navbar to **fixed** on all viewports, and adjust the body offset dynamically. This way the navbar stays fixed on both desktop and mobile, and the content is never overlapped even when the navbar shrinks.
+
+
